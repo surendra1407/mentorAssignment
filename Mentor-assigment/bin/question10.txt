@@ -1,0 +1,112 @@
+Comparable:- * java.lang.comparable interface represents an object which can be compared to other objects.
+			 *  For instance, numbers can be compared, strings can be compared using alphabetical comparison etc.
+			 *  we can also implement the Java Comparable interface ourself, to make our own classes comparable.
+			 *  When a class implements the Java Comparable interface, objects of that class can be compared to each other.
+			 *  Comparable interface is intended for comparison of objects of the same class. 
+			 *  compareTo() method takes a single object as parameter and returns an int value.
+Example:- 
+public class ComparableExample {
+
+    public static void main(String[] args) {
+
+        Integer valA = Integer.valueOf(45);
+        Integer valB = Integer.valueOf(99);
+
+        int comparisonA = valA.compareTo(valB);
+        int comparisonB = valB.compareTo(valA);
+
+        System.out.println(comparisonA); // output: -1 ..because 45<99
+        System.out.println(comparisonB); // output: 1 ..because 99>45
+    }
+}
+
+
+Comparator:- * java.util.Comparator represents a component that can compare two objects so they can be sorted using sorting functionality in Java. 
+			 * The Comparator is an external component to the objects being compared, whereas the Comparable is an interface implemented by the compared objects themselves.
+			 * The compare() method returns an int which signals which of the two objects was larger. The semantics of the return values are:
+
+				1) A negative value means that the first object was smaller than second object.
+				2) The value 0 means the two objects are equal.
+				3) A positive value means that the first object was larger than the second object.
+				
+Example:-
+
+package com.example.question10;
+
+import java.util.Comparator;
+
+public class Employee implements Comparable<Employee> {
+
+    private int id;
+    private String name;
+    private int age;
+    private long salary;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public long getSalary() {
+        return salary;
+    }
+
+    public Employee(int id, String name, int age, int salary) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.salary = salary;
+    }
+
+    @Override
+    public int compareTo(Employee emp) {
+        return (this.id - emp.id);
+    }
+    
+
+    @Override
+    public String toString() {
+        return "[id=" + this.id + ", name=" + this.name + ", age=" + this.age + ", salary=" +
+                this.salary + "]";
+    }
+
+}
+
+
+import java.util.Arrays;
+
+public class JavaObjectSorting {
+
+	public static Comparator<Employee> SalaryComparator = new Comparator<Employee>() {
+
+        @Override
+        public int compare(Employee e1, Employee e2) {
+            return (int) (e1.getSalary() - e2.getSalary());
+        }
+    };
+
+    public static void main(String[] args) {
+
+        //sorting custom object array
+        Employee[] empArr = new Employee[4];
+        empArr[0] = new Employee(10, "suri", 25, 10000);
+        empArr[1] = new Employee(20, "sai", 29, 20000);
+        empArr[2] = new Employee(5, "keerthi", 35, 5000);
+        
+        Arrays.sort(empArr);
+        System.out.println("Default Sorting of Employees list:\n"+Arrays.toString(empArr));
+        
+        
+        Arrays.sort(empArr, Employee.SalaryComparator);
+        System.out.println("Employees list sorted by Salary:\n"+Arrays.toString(empArr));
+        
+    }
+
+}

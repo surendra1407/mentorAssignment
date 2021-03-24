@@ -1,0 +1,25 @@
+Thread is a Sequential flow of control in a program.
+
+There are few stages in a thread:
+1)New 2)Runnable 3)Blocked 4)Waiting 5)timed waiting 6)terminated
+
+
+New:- A new thread is created, but it has not started yet, it yet to be run by calling the start method.
+
+Runnable:- once a thread is ready to run then its moved to runnable state.
+
+Blocked:- a thread is temporarily inactive, then it’s in one of the following states: 1)Blocked 2)Waiting 
+
+Timed waiting:- A thread lies in timed waiting state when it calls a method with a time out parameter.
+			    A thread lies in this state until the timeout is completed or until a notification is received.
+			    
+Terminated:- A thread terminates because of some unusual erroneous event, like segmentation fault or an unhandled exception.
+
+
+Non-Runnable states:-
+
+Sleeping: The thread sleeps for a specified amount of time .
+Blocked for I/O: The thread waits for a blocking operation to complete .
+Blocked for join completion: The thread awaits completion of another thread .
+Waiting for notification: The thread awaits notification from another thread .
+Blocked for lock acquisition: The thread waits to acquire the lock of an object .
