@@ -1,0 +1,73 @@
+ List:- * list interface extends the collections framework and it declares as the storing a sequence of elements. It may contains a duplicate elements.
+ 		* it allows us to store and accessing elements in order.
+ 		* the list interface contains many methods like add(int index, element),size(),get(int index),isEmpty().
+ 		* Null Elements:- The list allows null elements and you can have many null objects in a List because it also allowed duplicates. Set just allow one null element as there is no duplicate permitted while in Map you can have null values and at most one null key. 
+		Worth noting is that Hashtable doesn't allow null key or values but HashMap allows null values and one null key.  This is also the main difference between these two popular implementations of Map interface, HashMap vs Hashtable. 
+		Useful implementations. Most popular implementations of List interface in Java are ArrayList, LinkedList, and Vector class
+ 		
+ Example:- 
+ 
+ import java.util.*;
+  
+	public class ListDemo {
+   		 public static void main(String[] args)
+   		 {
+	        
+	        List<Integer> l1 = new ArrayList<Integer>();
+	  
+	        l1.add(1);
+	        l1.add(2);
+	        System.out.println(l1);
+	     }
+	 }   
+	 
+Set:- * Set interface is available in the java.util package
+	  * it extends the Collection interface 
+	  * it is an unordered collection of objects in which duplicate values cannot be stored.
+	  * HashSet,HashLinkedSet,treeSet,EnumSet
+	  * LinkedHashSet provides ordering along with uniqueness offered by the Set interface. 
+	  * TreeSet keeps elements in a sorted order specified by compare() or compareTo() method.
+Example:-
+
+import java.util.*;
+public class SetExample {
+    public static void main(String[] args)
+    {
+        
+        Set<String> set = new HashSet<String>();
+ 
+        set.add("hello");
+        set.add("welcome");
+        set.add("to");
+        set.add("CTS");
+ 
+        System.out.println(set);
+    }
+}  
+
+
+Map:- * Map interface is available in the java.util package.
+	  * it's represent a mapping between key and value pair
+	  * A Map cannot contain duplicate keys . Some implementations allow null key and null value like the HashMap and LinkedHashMap.
+	  * TreeMap and LinkedHashMap have predictable order, while HashMap does not.
+	  * There are two interfaces for implementing Map in java. 1) Map 2) SortedMap.
+	  
+Example:-
+import java.util.*;
+  
+public class MapExample {
+  
+    public static void main(String[] args)
+    {
+        Map<String, Integer> map
+            = new HashMap<>();
+  
+        map.put("suri", 10);
+        map.put("sai", 30);
+        map.put("keerthi", 20);
+  
+        for (Map.Entry<String, Integer> e : map.entrySet())
+            System.out.println(e.getKey() + " "
+                               + e.getValue());
+    }
+}
